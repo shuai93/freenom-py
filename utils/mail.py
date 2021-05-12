@@ -27,6 +27,7 @@ class EmailPoster(object):
         msg_root['From'] = mail_from
         msg_root['To'] = ";".join(mail_to)
 
+        print("settings.MAIL_PASSWORD = ", settings.MAIL_PASSWORD)
         try:
             smtp = smtplib.SMTP_SSL(settings.MAIL_HOST, settings.MAIL_PORT)
             # smtp.set_debuglevel(1)

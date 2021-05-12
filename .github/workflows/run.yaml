@@ -18,5 +18,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
       - name: execute py script
+        env:
+          MAIL_PASSWORD: ${{ secrets.MAIL_PASSWORD }}
         run: |
           python main.py
