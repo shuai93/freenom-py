@@ -5,6 +5,7 @@ from utils.mail import EmailPoster
 
 
 def main():
+    print([MAIL_TO, MAIL_PORT, MAIL_HOST, MAIL_ADDRESS, MAIL_PASSWORD, MAIL_USER, FM_USERNAME, FM_PASSWORD])
     if not all([MAIL_TO, MAIL_PORT, MAIL_HOST, MAIL_ADDRESS, MAIL_PASSWORD, MAIL_USER, FM_USERNAME, FM_PASSWORD]):
         raise CustomException("参数缺失")
 
