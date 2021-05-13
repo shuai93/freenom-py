@@ -3,7 +3,9 @@ name: Python package
 on:
   push:
     branches:
-      - master
+      - main
+  schedule:
+    - cron: 00 02 * * *
 
 jobs:
   build:
