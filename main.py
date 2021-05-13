@@ -1,9 +1,28 @@
+from utils.settings import *
+from utils.exception import CustomException
+from utils.freenom import FreeNom
 from utils.mail import EmailPoster
 
-if __name__ == "__main__":
+
+def main():
+    if not all([MAIL_TO, MAIL_PORT, MAIL_HOST, MAIL_ADDRESS, MAIL_PASSWORD, MAIL_USER, FM_USERNAME, FM_PASSWORD]):
+        raise CustomException("参数缺失")
+
+    to = [MAIL_TO]
+
     body = {
-        'subject': "测试",
-        'to': ["youngs@yeah.net"],
-        'body': "测试邮件"
+        'subject': "FreeNom 自动续期",
+        'to': to,
     }
+    try:
+        results = FreeNom().run()
+        body['payload'] = results
+    except CustomException as e:
+        body['body'] = e.message
+
     EmailPoster().send(data=body)
+
+
+if __name__ == "__main__":
+    main()
+

@@ -2,6 +2,7 @@ import smtplib
 import traceback
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from jinja2 import FileSystemLoader, Environment, Template
 
 from . import settings
 
@@ -9,10 +10,23 @@ from . import settings
 class EmailPoster(object):
     """
     邮件发送基础类
+
     """
 
+    @staticmethod
+    def get_template():
+        loader = FileSystemLoader('templates')
+        env = Environment(loader=loader)
+        template = env.get_template("default.html")
+        return template
+
     def send(self, data: dict):
-        content = data.get('body', '')
+        payload = data.get("payload", [])
+        if payload:
+            template = self.get_template()
+            content = template.render(payload=payload)
+        else:
+            content = data.get('body', '')
         subject = data.get('subject', '')
         mail_to = data.get('to', [])
         mail_from = data.get('from', settings.MAIL_ADDRESS)
@@ -27,7 +41,6 @@ class EmailPoster(object):
         msg_root['From'] = mail_from
         msg_root['To'] = ";".join(mail_to)
 
-        print("settings.MAIL_PASSWORD = ", settings.MAIL_PASSWORD)
         try:
             smtp = smtplib.SMTP_SSL(settings.MAIL_HOST, settings.MAIL_PORT)
             # smtp.set_debuglevel(1)

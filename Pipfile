@@ -7,6 +7,7 @@ verify_ssl = true
 
 [packages]
 requests = "==2.25.1"
+jinja2 = "*"
 
 [requires]
 python_version = "3.6"
