@@ -1,11 +1,11 @@
 # freenom-py
 
-## 项目描述
+## 项目描述 🔑
 
-模仿 [Freenom-PHP](https://github.com/shuai93/freenom) 实现python的版本
+一个 Freenom 自动续期域名的脚本
 
 
-## 项目部署
+## 项目部署 🥳
 
 目前仅实现了 Github Action 的部署方式，因为我觉得这种方式最适合这个项目。
 
@@ -28,7 +28,15 @@
 
 ### 3. 运行  Github Action ▶️
 
+关于如何配置以及启动 可以查看我的掘金文章 [ Github Action 的简单使用 ](https://juejin.cn/post/6969119163293892639)
 
 ### 4 查看收件箱 📮
 
-不出意外会收到一封自动续费的邮件
+不出意外会收到一封关于域名续期的邮件
+
+
+## 写在最后 🔚
+
+核心代码见 ` utils/freenom.py`
+
+此项目核心接口参考 [Freenom-PHP](https://github.com/shuai93/freenom) 。
