@@ -18,7 +18,10 @@ def main():
     }
     try:
         results = FreeNom().run()
-        body['payload'] = results
+        body['payload'] = {
+            "results": results,
+            "user": FM_USERNAME
+        }
     except CustomException as e:
         body['body'] = e.message
 

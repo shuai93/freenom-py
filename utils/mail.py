@@ -21,7 +21,7 @@ class EmailPoster(object):
         return template
 
     def send(self, data: dict):
-        payload = data.get("payload", [])
+        payload = data.get("payload", {})
         if payload:
             template = self.get_template()
             content = template.render(payload=payload)

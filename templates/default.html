@@ -285,10 +285,10 @@
         <td>&nbsp;</td>
         <td class="container">
           <div class="content" style="text-align:center">
+              <h4 style="text-align:left" >账户 <span style="color: #34495e"> {{ payload.get('user') }} </span> 今天所有域名续费情况如下：</h4>
 
             <!-- START CENTERED WHITE CONTAINER -->
             <table class="main">
-
               <!-- START MAIN CONTENT AREA -->
               <tr>
                 <td class="wrapper">
@@ -302,7 +302,7 @@
                         </tr>
                     </thead>
 
-                        {% for data in payload %}
+                        {% for data in payload.get('results') %}
                             <tr>
                                 <td>{{data[0]}}</td>
                                 <td>{{data[1]}}</td>
