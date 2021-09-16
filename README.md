@@ -37,6 +37,8 @@
 
 ## 写在最后 🔚
 
+关于如何 申请域名以及小伙伴如何绕开限制可以查看 [ 程序员，申请个域名 ](https://juejin.cn/post/6979411782674677790)
+
 核心代码见 ` utils/freenom.py`
 
 此项目核心接口参考 [Freenom-PHP](https://github.com/shuai93/freenom) 。
